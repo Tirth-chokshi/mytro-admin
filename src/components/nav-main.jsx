@@ -38,19 +38,20 @@ export function NavMain({
       <Separator orientation="horizontal" />
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton >
-            <CreditCard />
-            <Link href={"/dashboard/sales"}>
-
+          <Link href={"/dashboard/sales"}>
+            <SidebarMenuButton >
+              <CreditCard />
               Sales
-            </Link>
-          </SidebarMenuButton>
+            </SidebarMenuButton>
+          </Link>
         </SidebarMenuItem>
         <SidebarMenuItem>
-          <SidebarMenuButton >
-            <UserRound />
-            Customers
-          </SidebarMenuButton>
+          <Link href={"/dashboard/customers"}>
+            <SidebarMenuButton >
+              <UserRound />
+              Customers
+            </SidebarMenuButton>
+          </Link>
         </SidebarMenuItem>
         {items.map((item) => (
           <Collapsible
