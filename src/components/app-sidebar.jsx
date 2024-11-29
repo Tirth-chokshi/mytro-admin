@@ -47,213 +47,210 @@ const data = {
       items: [
         {
           title: "Deal Home Banners",
-          url: "#",
+          url: "/dashboard/deal_banners",
         },
         {
           title: "Shops List",
-          url: "#",
+          url: "/dashboards/shops/list",
         },
         {
           title: "Deals List",
-          url: "#",
+          url: "/dashboards/deals/list",
         },
         {
           title: "Purchased Deals",
-          url: "#",
+          url: "/dashboards/purchased_deals",
         },
       ],
     },
     {
       title: "Mytro Admin",
-      url: "#",
       icon: HousePlus,
       items: [
         {
           title: "Stores",
-          url: "#",
+          url: "/dashboards/stores",
         },
         {
           title: "Catergories",
-          url: "#",
+          url: "/dashboards/categories",
         },
         {
           title: "Sub-Catergories",
-          url: "#",
+          url: "/dashboards/sub-categories",
         },
         {
           title: "Products",
-          url: "#",
+          url: "/dashboards/products",
         },
         {
           title: "Products Bulk Upload",
-          url: "#",
+          url: "/dashboards/products-bulk-upload",
         },
         {
           title: "Home Banners",
-          url: "#",
+          url: "/dashboards/home-banners",
         },
         {
           title: "Home Block Banners",
-          url: "#",
+          url: "/dashboards/home-block-banners",
         },
         {
           title: "Discount Coupons",
-          url: "#",
+          url: "/dashboards/discount-coupons",
         },
         {
           title: "Abandoned Cart",
-          url: "#",
+          url: "/dashboards/abandoned-cart",
         },
         {
           title: "Brands",
-          url: "#",
+          url: "/dashboards/brands",
         },
       ],
     },
     {
       title: "Mytro Broadcast",
-      url: "#",
       icon: Bell,
       items: [
         {
           title: "Send SMS",
-          url: "#",
+          url: "/dashboards/send-sms",
         },
         {
           title: "Notifications",
-          url: "#",
+          url: "/dashboards/notification",
         },
         {
           title: "Whatsapp Notifications",
-          url: "#",
+          url: "/dashboards/whatsapp-notifications",
         },
       ],
     },
     {
       title: "Reporting",
-      url: "#",
       icon: ClipboardMinus,
       items: [
         {
           title: "Reports 01",
-          url: "#",
+          url: "/dashboards/",
           icon: ClipboardMinus,
           items: [
             {
               title: "Purchase Stock",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Sales Stock",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Sales Refund",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Expired Items",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Out of Stock Report",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Payment Collection",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Customer Reviews",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Order Report",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Couopn Code Report",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Sale Return Report",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
           ]
         },
         {
           title: "Reports 02",
-          url: "#",
+          url: "/dashboards/",
           icon: ClipboardMinus,
           items: [
             {
               title: "Datawise Analytics",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Prouduct Analytics",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Monthwise Analytics",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Monthwise Sales > &quot N &quot",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Userwise Sales > &quot N &quot",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Userwise Analytics",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "1st Order in Last 30 Days",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Refferal Reports",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Month & Areawise Sales",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "User Activity",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Timewise Statistics",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
             {
               title: "Master Reports",
-              url: "#",
+              url: "/dashboards/",
               icons: Settings2,
             },
           ]
@@ -262,39 +259,39 @@ const data = {
     },
     {
       title: "Wallet",
-      url: "#",
+      url: "/dashboards/",
       icon: Wallet,
       items: [
         {
           title: "Cash Credit",
-          url: "#",
+          url: "/dashboards/",
         },
         {
           title: "Cash Debit",
-          url: "#",
+          url: "/dashboards/",
         },
         {
           title: "Ecoin Credit",
-          url: "#",
+          url: "/dashboards/",
         },
         {
           title: "Ecoin Debit",
-          url: "#",
+          url: "/dashboards/",
         },
       ],
     },
     {
       title: "Subscription",
-      url: "#",
+      url: "/dashboards/",
       icon: CreditCard,
       items: [
         {
           title: "Reports 01",
-          url: "#",
+          url: "/dashboards/",
         },
         {
           title: "Reports 02",
-          url: "#",
+          url: "/dashboards/",
         },
       ],
     },
