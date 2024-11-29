@@ -51,19 +51,19 @@ const data = {
         },
         {
           title: "Shops Categories",
-          url: "/dashboards/mytro-deals/shops_categories",
+          url: "/dashboard/mytro-deals/shops_categories",
         },
         {
           title: "Shops List",
-          url: "/dashboards/mytro-deals/shops/list",
+          url: "/dashboard/mytro-deals/shops/list",
         },
         {
           title: "Deals List",
-          url: "/dashboards/mytro-deals/deals/list",
+          url: "/dashboard/mytro-deals/deals/list",
         },
         {
           title: "Purchased Deals",
-          url: "/dashboards/mytro-deals/purchased_deals",
+          url: "/dashboard/mytro-deals/purchased_deals",
         },
       ],
     },
@@ -73,43 +73,43 @@ const data = {
       items: [
         {
           title: "Stores",
-          url: "/dashboards/stores",
+          url: "/dashboard/stores",
         },
         {
           title: "Catergories",
-          url: "/dashboards/categories",
+          url: "/dashboard/categories",
         },
         {
           title: "Sub-Catergories",
-          url: "/dashboards/sub-categories",
+          url: "/dashboard/sub-categories",
         },
         {
           title: "Products",
-          url: "/dashboards/products",
+          url: "/dashboard/products",
         },
         {
           title: "Products Bulk Upload",
-          url: "/dashboards/products-bulk-upload",
+          url: "/dashboard/products-bulk-upload",
         },
         {
           title: "Home Banners",
-          url: "/dashboards/home-banners",
+          url: "/dashboard/home-banners",
         },
         {
           title: "Home Block Banners",
-          url: "/dashboards/home-block-banners",
+          url: "/dashboard/home-block-banners",
         },
         {
           title: "Discount Coupons",
-          url: "/dashboards/discount-coupons",
+          url: "/dashboard/discount-coupons",
         },
         {
           title: "Abandoned Cart",
-          url: "/dashboards/abandoned-cart",
+          url: "/dashboard/abandoned-cart",
         },
         {
           title: "Brands",
-          url: "/dashboards/brands",
+          url: "/dashboard/brands",
         },
       ],
     },
@@ -119,15 +119,15 @@ const data = {
       items: [
         {
           title: "Send SMS",
-          url: "/dashboards/send-sms",
+          url: "/dashboard/send-sms",
         },
         {
           title: "Notifications",
-          url: "/dashboards/notification",
+          url: "/dashboard/notification",
         },
         {
           title: "Whatsapp Notifications",
-          url: "/dashboards/whatsapp-notifications",
+          url: "/dashboard/whatsapp-notifications",
         },
       ],
     },
@@ -137,124 +137,124 @@ const data = {
       items: [
         {
           title: "Reports 01",
-          url: "/dashboards/",
+          url: "/dashboard/",
           icon: ClipboardMinus,
           items: [
             {
               title: "Purchase Stock",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Sales Stock",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Sales Refund",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Expired Items",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Out of Stock Report",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Payment Collection",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Customer Reviews",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Order Report",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Couopn Code Report",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Sale Return Report",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
           ]
         },
         {
           title: "Reports 02",
-          url: "/dashboards/",
+          url: "/dashboard/",
           icon: ClipboardMinus,
           items: [
             {
               title: "Datawise Analytics",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Prouduct Analytics",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Monthwise Analytics",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Monthwise Sales > &quot N &quot",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Userwise Sales > &quot N &quot",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Userwise Analytics",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "1st Order in Last 30 Days",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Refferal Reports",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Month & Areawise Sales",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "User Activity",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Timewise Statistics",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
             {
               title: "Master Reports",
-              url: "/dashboards/",
+              url: "/dashboard/",
               icons: Settings2,
             },
           ]
@@ -263,39 +263,39 @@ const data = {
     },
     {
       title: "Wallet",
-      url: "/dashboards/",
+      url: "/dashboard/",
       icon: Wallet,
       items: [
         {
           title: "Cash Credit",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
         {
           title: "Cash Debit",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
         {
           title: "Ecoin Credit",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
         {
           title: "Ecoin Debit",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
       ],
     },
     {
       title: "Subscription",
-      url: "/dashboards/",
+      url: "/dashboard/",
       icon: CreditCard,
       items: [
         {
           title: "Reports 01",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
         {
           title: "Reports 02",
-          url: "/dashboards/",
+          url: "/dashboard/",
         },
       ],
     },
@@ -315,7 +315,7 @@ export function AppSidebar({
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </SidebarFooter>  
       <SidebarRail />
     </Sidebar>)
   );

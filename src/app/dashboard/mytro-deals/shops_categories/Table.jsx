@@ -22,58 +22,21 @@ import { Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Im1 from './1.jpg'
-import Im2 from './2.jpg'
-import Im3 from './3.jpg'
-import Im4 from './4.jpg'
+// import Im1 from './1.jpg'
+// import Im2 from './2.jpg'
+// import Im3 from './3.jpg'
+// import Im4 from './4.jpg'
 
-import { useState,useEffect } from 'react'
 
-const columns = ["ID", "Banner", "Banner Position", "Status", "Action"]
+const columns = ["ID", "Name", "Image", "Banner", "Status", "Action"]
+const deals = [
+    { id: 1, name: 'Shop 1', image: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_categories/Cafe.jpg', banner: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_banners/logo(1).png', status: 'Active', action: 'Edit' },
+    { id: 2, name: 'Shop 2', image: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_categories/Electronics.jpg', banner: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_banners/4.jpg', status: 'Inactive', action: 'Edit' },
+    { id: 3, name: 'Shop 3', image: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_categories/Medical1.jpg', banner: 'https://api.mytro.in/storebackend_dev/assets/dist/img/deal_banners/hospital.jpg', status: 'Active', action: 'Edit' },
+]
 
 const DataTable = () => {
     const [entriesCount, setEntriesCount] = React.useState("10")
-    const [deals, setDeals] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [pagination, setPagination] = useState({
-        total: 0,
-        page: 1,
-        limit: 10,
-        totalPages: 0
-    })
-
-    useEffect(() => {
-        const fetchDeals = async () => {
-            try {
-                setLoading(true)
-                const response = await fetch(`/api/deals?page=1&limit=${entriesCount}`)
-                const data = await response.json()
-                setDeals(data.data)
-                setPagination(data.pagination)
-            } catch (error) {
-                console.error('Error fetching deals:', error)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetchDeals()
-    }, [entriesCount])
-
-    // Function to handle search
-    const handleSearch = async (searchTerm) => {
-        try {
-            setLoading(true)
-            const response = await fetch(`/api/deals?page=1&limit=${entriesCount}&search=${searchTerm}`)
-            const data = await response.json()
-            setDeals(data.data)
-            setPagination(data.pagination)
-        } catch (error) {
-            console.error('Error searching deals:', error)
-        } finally {
-            setLoading(false)
-        }
-    }
 
     return (
         <section>
@@ -128,7 +91,7 @@ const DataTable = () => {
                                                 alt={`Banner ${deal.id}`}
                                                 fill
                                                 className="object-cover rounded"
-                                            // sizes="(max-width: 96px) 100vw, 96px"
+                                                // sizes="(max-width: 96px) 100vw, 96px"
                                             />
                                         </div>
                                     </TableCell>
