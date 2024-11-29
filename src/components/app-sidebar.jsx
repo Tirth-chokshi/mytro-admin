@@ -47,19 +47,23 @@ const data = {
       items: [
         {
           title: "Deal Home Banners",
-          url: "/dashboard/deal_banners",
+          url: "/dashboard/mytro-deals/deal_banners",
+        },
+        {
+          title: "Shops Categories",
+          url: "/dashboards/mytro-deals/shops_categories",
         },
         {
           title: "Shops List",
-          url: "/dashboards/shops/list",
+          url: "/dashboards/mytro-deals/shops/list",
         },
         {
           title: "Deals List",
-          url: "/dashboards/deals/list",
+          url: "/dashboards/mytro-deals/deals/list",
         },
         {
           title: "Purchased Deals",
-          url: "/dashboards/purchased_deals",
+          url: "/dashboards/mytro-deals/purchased_deals",
         },
       ],
     },
