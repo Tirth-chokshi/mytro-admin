@@ -170,7 +170,7 @@ export default function OrderTable() {
       </div>
 
       {/* Pagination */}
-      <PaginationControls />
+      {/* <PaginationControls /> */}
     </div>
   );
 }
