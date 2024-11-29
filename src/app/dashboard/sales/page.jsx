@@ -22,151 +22,9 @@ import { Star, ArrowRight, ChevronDown, Search } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import orders from '@/app/data/data';
 import Link from 'next/link';
+
 export default function OrderTable() {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [showMobileRow, setShowMobileRow] = React.useState(null);
-  const [selectedEntries, setSelectedEntries] = React.useState('10');
-  const [currentPage, setCurrentPage] = React.useState(1);
 
-  // Mobile breakpoint detection
-  const [isMobile, setIsMobile] = React.useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const MobileOrderCard = ({ order, isExpanded, onToggle }) => (
-    <Card className="mb-4 hover:shadow-lg transition-shadow duration-200">
-      <CardContent className="p-4">
-        <div className="flex justify-between items-start mb-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <p className="font-medium">{order.orderCode}</p>
-              <Badge className="bg-emerald-500 text-white">{order.status}</Badge>
-            </div>
-            <p className="text-sm ">{order.date}</p>
-            <p className="text-sm ">{order.timeLeft}</p>
-          </div>
-          <div className="text-right">
-            <p className="font-medium">Rs {order.toCollect}</p>
-            <p className="text-sm ">{order.payment}</p>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-500">Customer:</span>
-            <div className="text-right">
-              <p className="font-medium">{order.customer}</p>
-              <p className="text-sm ">{order.location}</p>
-            </div>
-          </div>
-        </div>
-
-        <Button
-          variant="ghost"
-          className="w-full mt-4 flex items-center justify-center"
-          onClick={onToggle}
-        >
-          {isExpanded ? 'Show Less' : 'Show More'}
-          <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
-        </Button>
-
-        {isExpanded && (
-          <div className="mt-4 space-y-3 border-t pt-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-gray-500">Store</p>
-                <p className="font-medium">{order.store}</p>
-              </div>
-              <div>
-                <p className="text-gray-500">Expected</p>
-                <p className="font-medium">{order.expectedDelivery}</p>
-              </div>
-              <div>
-                <p className="text-gray-500">Item Total</p>
-                <p className="font-medium">Rs {order.total}</p>
-              </div>
-              <div>
-                <p className="text-gray-500">Shipping</p>
-                <p className="font-medium">Rs {order.shipping}</p>
-              </div>
-            </div>
-
-            <div className="flex justify-end gap-2 mt-4 pt-2 border-t">
-              <Button size="sm" variant="outline" className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-yellow-500" />
-                {!isMobile && "Rate"}
-              </Button>
-              <Button size="sm" variant="outline" className="flex items-center gap-2">
-                <ArrowRight className="h-4 w-4 text-teal-500" />
-                {!isMobile && "Process"}
-              </Button>
-            </div>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-
-  // Sample order data
-  const sampleOrder = {
-    orderCode: '2024113768',
-    customer: 'Abhishek',
-    location: 'IIT Gandhinagar',
-    store: 'Mytro Mart',
-    date: '20 Nov 2024 11:31 AM',
-    expectedDelivery: '45 min',
-    total: 445,
-    wallet: 0,
-    shipping: 40,
-    toCollect: 485,
-    status: 'Processing',
-    timeLeft: '29 min left',
-    payment: 'COD / Due',
-    feedback: 'No Feedback'
-  };
-
-  // Pagination controls
-  const PaginationControls = () => (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-      <p className="text-sm  text-center sm:text-left">
-        Showing 1 to {selectedEntries} of 50 entries
-      </p>
-      <div className="flex flex-wrap justify-center gap-2">
-        <Button
-          variant="outline"
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-        >
-          Previous
-        </Button>
-        {[1, 2, 3].map(page => (
-          <Button
-            key={page}
-            variant="outline"
-            className={currentPage === page ? "bg-teal-500 text-white" : ""}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </Button>
-        ))}
-        <Button
-          variant="outline"
-          disabled={currentPage === 3}
-          onClick={() => setCurrentPage(prev => Math.min(3, prev + 1))}
-        >
-          Next
-        </Button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="space-y-6 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -223,7 +81,7 @@ export default function OrderTable() {
       <div className="rounded-lg border p-4 shadow-sm space-y-4 md:space-y-0 md:flex md:justify-between md:items-center ">
         <div className="flex items-center gap-2">
           <span className="text-sm ">Show</span>
-          <Select value={selectedEntries} onValueChange={setSelectedEntries}>
+          <Select>
             <SelectTrigger className="w-[70px]">
               <SelectValue />
             </SelectTrigger>
@@ -240,8 +98,6 @@ export default function OrderTable() {
           <Input
             type="search"
             placeholder="Search orders..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10"
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 " />
@@ -315,19 +171,41 @@ export default function OrderTable() {
         </div>
       </div>
 
-      {/* Mobile Card View */}
-      <div className="md:hidden space-y-4">
-        <MobileOrderCard
-          order={sampleOrder}
-          isExpanded={showMobileRow === sampleOrder.orderCode}
-          onToggle={() => setShowMobileRow(
-            showMobileRow === sampleOrder.orderCode ? null : sampleOrder.orderCode
-          )}
-        />
-      </div>
-
       {/* Pagination */}
       <PaginationControls />
     </div>
   );
 }
+
+
+
+
+
+
+const PaginationControls = () => (
+  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+    <p className="text-sm  text-center sm:text-left">
+      Showing 1 of 50 entries
+    </p>
+    <div className="flex flex-wrap justify-center gap-2">
+      <Button
+        variant="outline"
+      >
+        Previous
+      </Button>
+      {[1, 2, 3].map(page => (
+        <Button
+          key={page}
+          variant="outline"
+        >
+          {page}
+        </Button>
+      ))}
+      <Button
+        variant="outline"
+      >
+        Next
+      </Button>
+    </div>
+  </div>
+);

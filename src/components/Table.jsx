@@ -23,45 +23,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import orders from '@/app/data/data';
 import Link from 'next/link';
 export default function OrderTable() {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [selectedEntries, setSelectedEntries] = React.useState('10');
-  const [currentPage, setCurrentPage] = React.useState(1);
-
-
-  // Pagination controls
-  const PaginationControls = () => (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-      <p className="text-sm  text-center sm:text-left">
-        Showing 1 to {selectedEntries} of 50 entries
-      </p>
-      <div className="flex flex-wrap justify-center gap-2">
-        <Button
-          variant="outline"
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-        >
-          Previous
-        </Button>
-        {[1, 2, 3].map(page => (
-          <Button
-            key={page}
-            variant="outline"
-            className={currentPage === page ? "bg-teal-500 text-white" : ""}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </Button>
-        ))}
-        <Button
-          variant="outline"
-          disabled={currentPage === 3}
-          onClick={() => setCurrentPage(prev => Math.min(3, prev + 1))}
-        >
-          Next
-        </Button>
-      </div>
-    </div>
-  );
 
   return (
     <div className="space-y-6 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -118,7 +79,7 @@ export default function OrderTable() {
       <div className="rounded-lg border p-4 shadow-sm space-y-4 md:space-y-0 md:flex md:justify-between md:items-center ">
         <div className="flex items-center gap-2">
           <span className="text-sm ">Show</span>
-          <Select value={selectedEntries} onValueChange={setSelectedEntries}>
+          <Select>
             <SelectTrigger className="w-[70px]">
               <SelectValue />
             </SelectTrigger>
@@ -135,8 +96,6 @@ export default function OrderTable() {
           <Input
             type="search"
             placeholder="Search orders..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10"
           />
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 " />
