@@ -1,13 +1,13 @@
 "use client"
-import React from 'react';
+import React from 'react'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
+} from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
 import {
   Table,
   TableBody,
@@ -15,13 +15,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Star, ArrowRight, ChevronDown, Search } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import orders from '@/app/data/data';
-import Link from 'next/link';
+} from '@/components/ui/table'
+import { Input } from '@/components/ui/input'
+import { Badge } from '@/components/ui/badge'
+import { Star, ArrowRight, ChevronDown, Search } from 'lucide-react'
+import orders from '@/app/data/data'
+import Link from 'next/link'
+
+const columns = ["Order Code", "Customer", "Date", "Item Total", "Wallet", "Shipping", "To Collect", "Status", "Payment", "Actions"]
 
 export default function OrderTable() {
 
@@ -83,7 +84,7 @@ export default function OrderTable() {
           <span className="text-sm ">Show</span>
           <Select>
             <SelectTrigger className="w-[70px]">
-              <SelectValue />
+              <SelectValue />10
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="10">10</SelectItem>
@@ -110,16 +111,11 @@ export default function OrderTable() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[120px]">Order Code</TableHead>
-                <TableHead className="min-w-[200px]">Customer</TableHead>
-                <TableHead className="min-w-[180px]">Date</TableHead>
-                <TableHead>Item Total</TableHead>
-                <TableHead>Wallet</TableHead>
-                <TableHead>Shipping</TableHead>
-                <TableHead>To Collect</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Payment</TableHead>
-                <TableHead className="w-[100px]">Actions</TableHead>
+                {columns.map((column, index) =>(
+                  <TableHead key={index}>
+                    {column}
+                  </TableHead>
+                ))}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -174,7 +170,7 @@ export default function OrderTable() {
       {/* Pagination */}
       <PaginationControls />
     </div>
-  );
+  )
 }
 
 
@@ -208,4 +204,4 @@ const PaginationControls = () => (
       </Button>
     </div>
   </div>
-);
+)
