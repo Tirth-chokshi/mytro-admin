@@ -297,7 +297,6 @@ const DataTable = () => {
                                     <TableCell>{user.registeredOn}</TableCell>
                                     <TableCell>
                                         <Switch
-                                            // checked={user.isBlocked}
                                             onCheckedChange={() => { }}
                                             className="data-[state=checked]:bg-red-500"
                                         />
