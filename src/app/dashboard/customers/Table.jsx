@@ -21,7 +21,6 @@ import { Switch } from '@/components/ui/switch'
 import { Wallet2, BarChart3, Bell, Eye, Search, Coins, Map } from 'lucide-react'
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import { useState } from 'react'
-import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import AddCashDialog, { AddCashBtn, AddCoinBtn, Addresbtn, NotiBtn } from './buttons'
 import Link from 'next/link'
 
@@ -219,12 +218,6 @@ const DataTable = () => {
             isBlocked: true
         }
     ];
-    const [open, setOpen] = useState(false);
-    const [openDialogId, setOpenDialogId] = useState(null);
-    // Form state
-    const [amount, setAmount] = useState('');
-    const [type, setType] = useState('Credit');
-    const [saleNumber, setSaleNumber] = useState('');
 
     return (
         <section>
@@ -234,7 +227,7 @@ const DataTable = () => {
                     <span className="text-sm ">Show</span>
                     <Select>
                         <SelectTrigger className="w-[70px]">
-                            <SelectValue />10
+                            <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem value="10">10</SelectItem>
