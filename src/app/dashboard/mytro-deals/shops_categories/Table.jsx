@@ -84,6 +84,7 @@ const DataTable = () => {
                             {deals.map(deal => (
                                 <TableRow key={deal.id}>
                                     <TableCell>{deal.id}</TableCell>
+                                    <TableCell>{deal.name}</TableCell>
                                     <TableCell>
                                         <div className="relative w-24 h-16">
                                             <Image

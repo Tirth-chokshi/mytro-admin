@@ -22,7 +22,7 @@ import { Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const columns = ["ID", "Title","Active","Actions"]
+const columns = ["ID", "Title", "Active", "Actions"];
 const data = [
     { id: 1, title: "Shop 1", active: true },
     { id: 2, title: "Shop 2", active: false },
@@ -34,16 +34,16 @@ const DataTable = () => {
     return (
         <section>
             {/* Search and Controls */}
-        <div className="flex justify-between items-center mb-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center space-x-2">
+                </div>
+                <Button variant="primary" className="flex items-center space-x-2">
+                    <span>Add</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </Button>
             </div>
-            <Button variant="primary" className="flex items-center space-x-2">
-                <span>Add</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-            </Button>
-        </div>
             {/* Responsive Table/Card View */}
             <div className="hidden md:block rounded-lg border overflow-hidden mt-4">
                 <div className="overflow-x-auto">

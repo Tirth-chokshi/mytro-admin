@@ -304,19 +304,19 @@ const DataTable = () => {
                                     <TableCell>
                                         <div className="flex flex-col gap-2">
                                             <AddCashBtn />
-                                            <AddCoinBtn/>
-                                           <NotiBtn/>
+                                            <AddCoinBtn />
+                                            <NotiBtn />
                                             <Tooltip>
                                                 <TooltipTrigger asChild>
                                                     <Link href={`/dashboard/customers/view/${user.id}`}>
-                                                    <Button variant="outline" className="bg-cyan-500 hover:bg-cyan-600 text-white w-8 h-8 p-0">
-                                                        <Eye className="h-4 w-4" />
-                                                    </Button>
+                                                        <Button variant="outline" className="bg-cyan-500 hover:bg-cyan-600 text-white w-8 h-8 p-0">
+                                                            <Eye className="h-4 w-4" />
+                                                        </Button>
                                                     </Link>
                                                 </TooltipTrigger>
                                                 <TooltipContent>View</TooltipContent>
                                             </Tooltip>
-                                            <Addresbtn/>
+                                            <Addresbtn />
                                         </div>
                                     </TableCell>
                                 </TableRow>
