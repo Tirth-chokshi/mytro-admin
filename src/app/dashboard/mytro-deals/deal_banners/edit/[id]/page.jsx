@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import { X } from "lucide-react";
 import { useParams } from "next/navigation"
+import Image from 'next/image'
 
 export default function EditDealBanner() {
     const [image, setImage] = React.useState(null);
@@ -94,7 +95,7 @@ export default function EditDealBanner() {
                                     </Button>
                                     {imagePreview && (
                                         <div className="relative w-24">
-                                            <img
+                                            <Image
                                                 src={imagePreview}
                                                 alt="Category preview"
                                                 className="w-full h-auto"
@@ -132,7 +133,7 @@ export default function EditDealBanner() {
                                     </Button>
                                     {bannerPreview && (
                                         <div className="relative w-48">
-                                            <img
+                                            <Image
                                                 src={bannerPreview}
                                                 alt="Banner preview"
                                                 className="w-full h-auto"
