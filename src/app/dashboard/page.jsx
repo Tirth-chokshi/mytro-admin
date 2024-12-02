@@ -1,8 +1,10 @@
+
 "use client"
 import { MonthlyActivityChart } from "@/components/monthly-activity-chart"
 import { MonthlySalesChart } from "@/components/monthly-sales-chart"
 import { MonthlyUsersChart } from "@/components/monthly-users-chart"
-import { ShoppingCart, Users, Package, CreditCard } from 'lucide-react';
+import { ShoppingCart, Users, Package, CreditCard } from 'lucide-react'
+
 
 export default function Page() {
   return (
@@ -75,8 +77,9 @@ export default function Page() {
         </div>
       </div>
     </div>
-  );
+  )
 }
+
 
 function MetricCard({ title, icon, metrics }) {
   return (
@@ -96,8 +99,9 @@ function MetricCard({ title, icon, metrics }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
+
 
 function DeliveryStatus() {
   const statuses = [
@@ -107,13 +111,15 @@ function DeliveryStatus() {
     { label: "Delivered", value: "0", color: "bg-blue-500" },
     { label: "Cancelled", value: "0", color: "bg-gray-500" },
     { label: "Delivery Pending", value: "5", color: "bg-yellow-500" },
-  ];
+  ]
 
+  
   return (
     <div className="rounded-lg border shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Today&apos;s Delivery Status</h3>
+        <h3 className="text-lg font-semibold">Today&aposs Delivery Status</h3>
       </div>
+      
       <div className="space-y-3">
         {statuses.map((status, index) => (
           <div key={index} className="flex items-center justify-between">
@@ -126,8 +132,9 @@ function DeliveryStatus() {
         ))}
       </div>
     </div>
-  );
+  )
 }
+
 
 function PaymentStatus() {
   const payments = [
@@ -137,13 +144,15 @@ function PaymentStatus() {
     { method: "Mytro Wallet", value: "0", color: "bg-purple-500" },
     { method: "Online", value: "0", color: "bg-blue-500" },
     { method: "Pending", value: "0", color: "bg-yellow-500" },
-  ];
+  ]
 
+  
   return (
     <div className="rounded-lg border shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">Today&apos;s Payment Status</h3>
+        <h3 className="text-lg font-semibold">Today&aposs Payment Status</h3>
       </div>
+      
       <div className="space-y-3">
         {payments.map((payment, index) => (
           <div key={index} className="flex items-center justify-between">
@@ -156,5 +165,6 @@ function PaymentStatus() {
         ))}
       </div>
     </div>
-  );
+  )
 }
+

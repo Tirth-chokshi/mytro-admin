@@ -33,16 +33,23 @@ export default function RegisterForm() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     setIsLoading(true);
     setError('');
 
     try {
-      await authService.register(formData);
-      redirect('/login')
-    } catch (err) {
-      setError(err.message || 'Registration failed');
+      const result = await authService.register({
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        profileImage: formData.profileImage // This is already set by handleImageChange
+      });
+
+      // Handle successful registration
+      redirect('/dashboard'); // or wherever you want to redirect after success
+    } catch (error) {
+      setError(error.message || 'Registration failed');
     } finally {
       setIsLoading(false);
     }
@@ -117,8 +124,8 @@ export default function RegisterForm() {
               </Alert>
             )}
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               className="w-full"
               disabled={isLoading}
             >
