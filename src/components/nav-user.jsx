@@ -8,7 +8,7 @@ import {
   LogOut,
   Sparkles,
 } from "lucide-react"
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Avatar,
   AvatarFallback,
@@ -29,63 +29,81 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { adminService } from "@/services/adminService"
-import { useEffect, useState } from "react"
-// import { useRouter } from "next/router"
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 
-export function NavUser({
-  user
-}) {
-
-  const { isMobile } = useSidebar()
-  const [admin, setAdmin] = useState(null);
+export function NavUser() {
+  const [adminProfile, setAdminProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // const router = useRouter();
+  const { isMobile } = useSidebar()
   useEffect(() => {
-    fetchAdminData();
+    const fetchAdminProfile = async () => {
+      try {
+        // Get the token from wherever you're storing it (localStorage, cookies, etc.)
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+          throw new Error('No authentication token found');
+        }
+
+        const response = await axios.get('http://localhost:8000/admin/profile', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        setAdminProfile(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchAdminProfile();
   }, []);
+  if (loading) {
+    return (
+      <Card className="w-full max-w-md mx-auto">
+        <CardHeader>
+          <CardTitle>Loading Profile...</CardTitle>
+        </CardHeader>
+        <CardContent className="flex justify-center items-center">
+          Loading...
+        </CardContent>
+      </Card>
+    );
+  }
 
-  const fetchAdminData = async () => {
-    try {
-      const data = await adminService.getProfile();
-      setAdmin(data);
-      setError(null);
-      console.log(data)
-    } catch (err) {
-      setError(err.message);
-      // setAdmin(null);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    try {
-      await adminService.logout();
-      setAdmin(null);
-      // router.push('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
-
-
+  if (error) {
+    return (
+      <Card className="w-full max-w-md mx-auto">
+        <CardHeader>
+          <CardTitle>Error</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-red-500">{error}</p>
+        </CardContent>
+      </Card>
+    );
+  }
+  
   return (
     (<SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
+          <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
               <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarImage src={adminProfile.pictruePath} alt={"name"} />
+                {/* <AvatarFallback className="rounded-lg">CN</AvatarFallback> */}
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
+                <span className="truncate font-semibold">{adminProfile.username}</span>
+                <span className="truncate text-xs">{adminProfile.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -95,7 +113,7 @@ export function NavUser({
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}>
-            <DropdownMenuLabel className="p-0 font-normal">
+            {/* <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
@@ -106,7 +124,7 @@ export function NavUser({
                   <span className="truncate text-xs">{user.email}</span>
                 </div>
               </div>
-            </DropdownMenuLabel>
+            </DropdownMenuLabel> */}
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
