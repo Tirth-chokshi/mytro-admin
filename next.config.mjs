@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['api.mytro.in'],
+        domains: ['api.mytro.in','example.com']
       },
 };
 
