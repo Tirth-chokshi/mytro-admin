@@ -1,12 +1,46 @@
-
-"use client"
-import { MonthlyActivityChart } from "@/components/monthly-activity-chart"
-import { MonthlySalesChart } from "@/components/monthly-sales-chart"
-import { MonthlyUsersChart } from "@/components/monthly-users-chart"
-import { ShoppingCart, Users, Package, CreditCard } from 'lucide-react'
-
+"use client";
+import { MonthlyActivityChart } from "@/components/monthly-activity-chart";
+import { MonthlySalesChart } from "@/components/monthly-sales-chart";
+import { MonthlyUsersChart } from "@/components/monthly-users-chart";
+import { ShoppingCart, Users, Package, CreditCard } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          window.location.href = "/login";
+        }
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+    checkAuth();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-red-500">Error: {error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen">
       <div className="flex-1 overflow-auto">
@@ -77,9 +111,8 @@ export default function Page() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
 
 function MetricCard({ title, icon, metrics }) {
   return (
@@ -99,9 +132,8 @@ function MetricCard({ title, icon, metrics }) {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
 
 function DeliveryStatus() {
   const statuses = [
@@ -111,15 +143,14 @@ function DeliveryStatus() {
     { label: "Delivered", value: "0", color: "bg-blue-500" },
     { label: "Cancelled", value: "0", color: "bg-gray-500" },
     { label: "Delivery Pending", value: "5", color: "bg-yellow-500" },
-  ]
+  ];
 
-  
   return (
     <div className="rounded-lg border shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">Today&aposs Delivery Status</h3>
       </div>
-      
+
       <div className="space-y-3">
         {statuses.map((status, index) => (
           <div key={index} className="flex items-center justify-between">
@@ -132,9 +163,8 @@ function DeliveryStatus() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
 
 function PaymentStatus() {
   const payments = [
@@ -144,15 +174,14 @@ function PaymentStatus() {
     { method: "Mytro Wallet", value: "0", color: "bg-purple-500" },
     { method: "Online", value: "0", color: "bg-blue-500" },
     { method: "Pending", value: "0", color: "bg-yellow-500" },
-  ]
+  ];
 
-  
   return (
     <div className="rounded-lg border shadow-sm p-6 hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-semibold">Today&aposs Payment Status</h3>
       </div>
-      
+
       <div className="space-y-3">
         {payments.map((payment, index) => (
           <div key={index} className="flex items-center justify-between">
@@ -165,6 +194,5 @@ function PaymentStatus() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
