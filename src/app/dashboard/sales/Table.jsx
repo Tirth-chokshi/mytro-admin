@@ -53,7 +53,7 @@ export default function OrderTable() {
     };
     getOrders();
   }, []);
-  
+
   return (
     <section>
       {/* Responsive Filters */}
@@ -107,7 +107,9 @@ export default function OrderTable() {
                   </TableCell>
                   <TableCell>
                     <div className="space-y-1">
-                      <p className="font-medium">{order.customer.userInfo.name}</p>
+                      <p className="font-medium">
+                        {order.customer.userInfo.name}
+                      </p>
                       <p className="text-sm ">{order.orderLocation}</p>
                       <p className="text-sm ">{order.storeName}</p>
                     </div>
@@ -134,8 +136,12 @@ export default function OrderTable() {
                     </p>
                   </TableCell>
                   <TableCell>
-                    <p className="text-xs  mt-1">{order.paymentDetails.method}</p>
-                    <p className="text-xs  mt-1">{order.paymentDetails.status}</p>
+                    <p className="text-xs  mt-1">
+                      {order.paymentDetails.method}
+                    </p>
+                    <p className="text-xs  mt-1">
+                      {order.paymentDetails.status}
+                    </p>
                   </TableCell>
                   <TableCell>
                     <div className="flex gap-2">

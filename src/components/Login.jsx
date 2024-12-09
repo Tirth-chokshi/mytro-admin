@@ -82,7 +82,7 @@ export default function LoginForm() {
         </CardContent>
         <CardFooter className="flex justify-center">
           <Button variant="link" onClick={() => router.push('/register')}>
-            Don't have an account? Register
+            Don&apos;t have an account? Register
           </Button>
         </CardFooter>
       </Card>

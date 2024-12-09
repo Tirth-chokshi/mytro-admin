@@ -13,45 +13,53 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
   DialogDescription,
   DialogTrigger,
   DialogFooter,
-  DialogClose
+  DialogClose,
 } from "@/components/ui/dialog";
-import { 
-  Popover, 
-  PopoverContent, 
-  PopoverTrigger 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/popover";
-import { 
-  Command, 
-  CommandEmpty, 
-  CommandGroup, 
-  CommandInput, 
-  CommandItem, 
-  CommandList 
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
 } from "@/components/ui/command";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import OrderDriverAssignment from "@/components/DriverAssignment";
 
 export default function OrderDetailPage() {
   const params = useParams();
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [selectedStatus, setSelectedStatus] = useState(order?.deliveryStatus.status);
-  const [isStatusChangeDialogOpen, setIsStatusChangeDialogOpen] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(
+    order?.deliveryStatus.status
+  );
+  const [isStatusChangeDialogOpen, setIsStatusChangeDialogOpen] =
+    useState(false);
+
+  const handleDriverUpdate = (updatedOrder) => {
+    setOrder(updatedOrder);
+  };
 
   const deliveryStatuses = [
     "Pending",
-    "Processing", 
-    "Shipped", 
-    "Delivered", 
-    "Cancelled"
+    "Processing",
+    "Shipped",
+    "Delivered",
+    "Cancelled",
   ];
 
   useEffect(() => {
@@ -73,33 +81,36 @@ export default function OrderDetailPage() {
 
   const handleStatusChange = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/orders/${params.orderCode}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          status: selectedStatus,
-          duration: order.deliveryStatus.duration // Maintain existing duration
-        })
-      });
+      const res = await fetch(
+        `http://localhost:8000/orders/${params.orderCode}/status`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: selectedStatus,
+            duration: order.deliveryStatus.duration,
+          }),
+        }
+      );
 
       if (!res.ok) {
-        throw new Error('Failed to update status');
+        throw new Error("Failed to update status");
       }
 
       // Optimistically update the UI
-      setOrder(prevOrder => ({
+      setOrder((prevOrder) => ({
         ...prevOrder,
         deliveryStatus: {
           ...prevOrder.deliveryStatus,
-          status: selectedStatus
-        }
+          status: selectedStatus,
+        },
       }));
 
       setIsStatusChangeDialogOpen(false);
     } catch (error) {
-      console.error('Error updating order status:', error);
+      console.error("Error updating order status:", error);
       // TODO: Add user-friendly error handling
     }
   };
@@ -191,13 +202,13 @@ export default function OrderDetailPage() {
             >
               {order.deliveryStatus.status}
             </Badge>
-            <Dialog 
-              open={isStatusChangeDialogOpen} 
+            <Dialog
+              open={isStatusChangeDialogOpen}
               onOpenChange={setIsStatusChangeDialogOpen}
             >
               <DialogTrigger asChild>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   size="sm"
                   // disabled={order.deliveryStatus.status === "Delivered"}
                 >
@@ -211,7 +222,7 @@ export default function OrderDetailPage() {
                     Update the current status of this order.
                   </DialogDescription>
                 </DialogHeader>
-                
+
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
@@ -238,7 +249,9 @@ export default function OrderDetailPage() {
                               <Check
                                 className={cn(
                                   "mr-2 h-4 w-4",
-                                  selectedStatus === status ? "opacity-100" : "opacity-0"
+                                  selectedStatus === status
+                                    ? "opacity-100"
+                                    : "opacity-0"
                                 )}
                               />
                               {status}
@@ -254,7 +267,7 @@ export default function OrderDetailPage() {
                   <DialogClose asChild>
                     <Button variant="outline">Cancel</Button>
                   </DialogClose>
-                  <Button 
+                  <Button
                     onClick={handleStatusChange}
                     disabled={selectedStatus === order.deliveryStatus.status}
                   >
@@ -264,7 +277,7 @@ export default function OrderDetailPage() {
               </DialogContent>
             </Dialog>
           </div>
-        </div>
+        </div>  
         <div>
           <p className="text-sm font-medium text-gray-600">Delivery Duration</p>
           <p className="text-lg font-semibold">
@@ -292,20 +305,20 @@ export default function OrderDetailPage() {
           <CardContent>
             <dl className="space-y-2">
               <div>
-                <dt className="font-medium">Name</dt>
+                <p className="font-medium">Name</p>
                 <dd>{order.customer.userInfo.name}</dd>
               </div>
               <div>
-                <dt className="font-medium">Customer Code</dt>
-                <dd>{order.customer.custCode}</dd>
+                <p className="font-medium">Customer Code</p>
+                <p>{order.customer.custCode}</p>
               </div>
               <div>
-                <dt className="font-medium">Contact</dt>
-                <dd>{order.customer.mobile.phone}</dd>
+                <p className="font-medium">Contact</p>
+                <p>{order.customer.mobile.phone}</p>
               </div>
               <div>
-                <dt className="font-medium">Email</dt>
-                <dd>{order.customer.userInfo.email}</dd>
+                <p className="font-medium">Email</p>
+                <p>{order.customer.userInfo.email}</p>
               </div>
             </dl>
           </CardContent>
@@ -318,16 +331,16 @@ export default function OrderDetailPage() {
           <CardContent>
             <dl className="space-y-2">
               <div>
-                <dt className="font-medium">Shipping Address</dt>
-                <dd>{order.shippingAddress}</dd>
+                <p className="font-medium">Shipping Address</p>
+                <p>{order.shippingAddress}</p>
               </div>
               <div>
-                <dt className="font-medium">Expected Delivery</dt>
-                <dd>{new Date(order.expectedDelivery).toLocaleDateString()}</dd>
+                <p className="font-medium">Expected Delivery</p>
+                <p>{new Date(order.expectedDelivery).toLocaleDateString()}</p>
               </div>
               <div>
-                <dt className="font-medium">Order Location</dt>
-                <dd>{order.orderLocation}</dd>
+                <p className="font-medium">Order Location</p>
+                <p>{order.orderLocation}</p>
               </div>
             </dl>
           </CardContent>
@@ -419,7 +432,10 @@ export default function OrderDetailPage() {
             </dl>
           </CardContent>
         </Card>
-
+        <OrderDriverAssignment
+          order={order}
+          onDriverUpdate={handleDriverUpdate}
+        />
         <Card>
           <CardHeader>
             <CardTitle>Order Summary</CardTitle>
@@ -428,7 +444,9 @@ export default function OrderDetailPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h4 className="text-sm font-medium text-gray-600 mb-2">Order Totals</h4>
+                  <h4 className="text-sm font-medium text-gray-600 mb-2">
+                    Order Totals
+                  </h4>
                   <dl className="space-y-2">
                     <div className="flex justify-between">
                       <dt>Item Total</dt>
@@ -444,9 +462,11 @@ export default function OrderDetailPage() {
                     </div>
                   </dl>
                 </div>
-                
+
                 <div>
-                  <h4 className="text-sm font-medium text-gray-600 mb-2">Tax Breakdown</h4>
+                  <h4 className="text-sm font-medium text-gray-600 mb-2">
+                    Tax Breakdown
+                  </h4>
                   <dl className="space-y-2">
                     <div className="flex justify-between">
                       <dt>Taxable Amount</dt>
