@@ -72,44 +72,48 @@ const data = {
       icon: HousePlus,
       items: [
         {
+          title: "City Zones",
+          url: "/dashboard/mytro-admin/city-zones",
+        },
+        {
           title: "Stores",
-          url: "/dashboard/stores",
+          url: "/dashboard/mytro-admin/stores",
         },
         {
           title: "Catergories",
-          url: "/dashboard/categories",
+          url: "/dashboard/mytro-admin/categories",
         },
         {
           title: "Sub-Catergories",
-          url: "/dashboard/sub-categories",
+          url: "/dashboard/mytro-admin/sub-categories",
         },
         {
           title: "Products",
-          url: "/dashboard/products",
+          url: "/dashboard/mytro-admin/products",
         },
         {
           title: "Products Bulk Upload",
-          url: "/dashboard/products-bulk-upload",
+          url: "/dashboard/mytro-admin/products-bulk-upload",
         },
         {
           title: "Home Banners",
-          url: "/dashboard/home-banners",
+          url: "/dashboard/mytro-admin/home-banners",
         },
         {
           title: "Home Block Banners",
-          url: "/dashboard/home-block-banners",
+          url: "/dashboard/mytro-admin/home-block-banners",
         },
         {
           title: "Discount Coupons",
-          url: "/dashboard/discount-coupons",
+          url: "/dashboard/mytro-admin/discount-coupons",
         },
         {
           title: "Abandoned Cart",
-          url: "/dashboard/abandoned-cart",
+          url: "/dashboard/mytro-admin/abandoned-cart",
         },
         {
           title: "Brands",
-          url: "/dashboard/brands",
+          url: "/dashboard/mytro-admin/brands",
         },
       ],
     },
@@ -119,15 +123,15 @@ const data = {
       items: [
         {
           title: "Send SMS",
-          url: "/dashboard/send-sms",
+          url: "/dashboard/mytro-broadcast/send-sms",
         },
         {
           title: "Notifications",
-          url: "/dashboard/notification",
+          url: "/dashboard/mytro-broadcast/notification",
         },
         {
           title: "Whatsapp Notifications",
-          url: "/dashboard/whatsapp-notifications",
+          url: "/dashboard/mytro-broadcast/whatsapp-notifications",
         },
       ],
     },
