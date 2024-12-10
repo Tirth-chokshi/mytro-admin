@@ -10,7 +10,7 @@ export default function Page() {
         <Link href="/dashboard/mytro-admin/stores/new">
           <Button variant="outline" className="flex items-center gap-2">
             <Plus size={16} />
-            <span>Add New Zone</span>
+            <span>Add New Store</span>
           </Button>
         </Link>
       </div>
