@@ -92,15 +92,15 @@ export default function Page() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-6">
-        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+      <div className="bg-muted max-w-xl mx-auto shadow-lg rounded-xl p-6">
+        <h1 className="text-3xl font-bold text-center mb-6">
           Create New Delivery Zone
         </h1>
         
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Zone Nam
+              Zone Name
             </label>
             <Input
               name="zoneName"
@@ -124,7 +124,7 @@ export default function Page() {
           
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Coordinates <span className="text-red-500">*</span>
+              Coordinate
             </label>
             <Textarea
               name="cords"
