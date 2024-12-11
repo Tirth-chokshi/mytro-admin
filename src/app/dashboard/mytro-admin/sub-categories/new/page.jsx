@@ -18,13 +18,12 @@ export default function CreateSubCategory() {
     sourceAt: "",
     sourceAtColor: "",
     category: "",
-    status: "",
-    tempStatus: "",
+    status: "active",
+    tempStatus: "inactive"
   });
 
-  const [image, setImage] = useState(null);
-  const [heroBanner, setHeroBanner] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -34,10 +33,10 @@ export default function CreateSubCategory() {
           const data = await response.json();
           setCategories(data);
         } else {
-          console.error("Failed to fetch categories");
+          setError("Failed to fetch categories");
         }
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        setError(`Error fetching categories: ${error.message}`);
       }
     };
 
@@ -51,45 +50,59 @@ export default function CreateSubCategory() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formDataObj = new FormData();
-    formDataObj.append("name", formData.name);
-    formDataObj.append("displayOrder", formData.displayOrder);
-    formDataObj.append("sourceAt", formData.sourceAt);
-    formDataObj.append("sourceAtColor", formData.sourceAtColor);
-    formDataObj.append("category", formData.category);
-    formDataObj.append("status", formData.status);
-    formDataObj.append("tempStatus", formData.tempStatus);
-    if (image) formDataObj.append("image", image);
-    if (heroBanner) formDataObj.append("heroBanner", heroBanner);
+    setError("");
 
     try {
       const response = await fetch(
         "http://localhost:8000/subcategories/create",
         {
           method: "POST",
-          body: formDataObj,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            displayOrder: parseInt(formData.displayOrder),
+            sourceAt: formData.sourceAt,
+            sourceAtColor: formData.sourceAtColor,
+            category: formData.category,
+            status: formData.status,
+            tempStatus: formData.tempStatus
+          }),
         }
       );
 
+      const data = await response.json();
+
       if (response.ok) {
         alert("Subcategory created successfully!");
+        // Reset form
+        setFormData({
+          name: "",
+          displayOrder: "",
+          sourceAt: "",
+          sourceAtColor: "",
+          category: "",
+          status: "active",
+          tempStatus: "inactive"
+        });
       } else {
-        alert("Error creating subcategory.");
-        console.error("Error creating subcategory:", response.statusText);
-        console.log(response);
+        setError(data.error || "Error creating subcategory");
       }
     } catch (error) {
-      console.error("Error:", error);
-      console.log(error);
+      setError(`Error: ${error.message}`);
     }
   };
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Create New SubCategory</h1>
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          {error}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Name Field */}
         <div>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -102,7 +115,6 @@ export default function CreateSubCategory() {
           />
         </div>
 
-        {/* Display Order Field */}
         <div>
           <Label htmlFor="displayOrder">Display Order</Label>
           <Input
@@ -116,7 +128,6 @@ export default function CreateSubCategory() {
           />
         </div>
 
-        {/* Source At */}
         <div>
           <Label htmlFor="sourceAt">Source At</Label>
           <Input
@@ -125,10 +136,10 @@ export default function CreateSubCategory() {
             value={formData.sourceAt}
             onChange={handleInputChange}
             placeholder="Enter source location"
+            required
           />
         </div>
 
-        {/* Source At Color */}
         <div>
           <Label htmlFor="sourceAtColor">Source At Color</Label>
           <Input
@@ -137,10 +148,10 @@ export default function CreateSubCategory() {
             value={formData.sourceAtColor}
             onChange={handleInputChange}
             placeholder="Enter source color"
+            required
           />
         </div>
 
-        {/* Category Dropdown */}
         <div>
           <Label htmlFor="category">Category</Label>
           <Select
@@ -162,29 +173,13 @@ export default function CreateSubCategory() {
           </Select>
         </div>
 
-        {/* Image Upload */}
-        <div>
-          <Label>Category Image</Label>
-          <Input type="file" onChange={(e) => setImage(e.target.files[0])} />
-        </div>
-
-        {/* Hero Banner Upload */}
-        <div>
-          <Label>Hero Banner</Label>
-          <Input
-            type="file"
-            onChange={(e) => setHeroBanner(e.target.files[0])}
-          />
-        </div>
-
-        {/* Status */}
         <div>
           <Label>Status</Label>
           <Select
             onValueChange={(value) =>
               setFormData((prev) => ({ ...prev, status: value }))
             }
-            defaultValue={formData.status}
+            value={formData.status}
           >
             <SelectTrigger>
               <SelectValue placeholder="Select status" />
@@ -196,14 +191,13 @@ export default function CreateSubCategory() {
           </Select>
         </div>
 
-        {/* Temporary Status */}
         <div>
           <Label>Temporary Status</Label>
           <Select
             onValueChange={(value) =>
               setFormData((prev) => ({ ...prev, tempStatus: value }))
             }
-            defaultValue={formData.tempStatus}
+            value={formData.tempStatus}
           >
             <SelectTrigger>
               <SelectValue placeholder="Select temporary status" />
@@ -215,7 +209,6 @@ export default function CreateSubCategory() {
           </Select>
         </div>
 
-        {/* Submit Button */}
         <Button type="submit">Create SubCategory</Button>
       </form>
     </div>

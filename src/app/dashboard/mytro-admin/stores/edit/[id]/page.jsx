@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useParams } from 'next/navigation'
-function page() {
+export default function EditStore() {
     const { id } = useParams()
   return (
     <div>
@@ -9,5 +9,3 @@ function page() {
     </div>
   )
 }
-
-export default page
